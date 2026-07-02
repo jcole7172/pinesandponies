@@ -52,3 +52,10 @@ npm run dev   # local preview at localhost:8080
   `web3formsKey` is set, prefilled email otherwise). Real-time paid booking comes later via
   OwnerRez (seam + CSP notes in `src/headers.njk`). Furnished Finder cannot sync (no API) — those
   dates are managed by hand; that's their limitation, not a bug.
+
+## Live QA
+After any deploy, run the full-site crawler against the live site:
+```
+node scripts/qa-crawl.js https://<the-live-url>
+```
+It checks every page, every link, every asset, every anchor, JSON-LD, canonicals, and og images. Fix any FAILURES before telling John something is done. (Bot-walled domains like Facebook/bizjournals appear as warnings — that is expected.)

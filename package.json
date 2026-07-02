@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Pines & Ponies — direct-booking vacation rental site (pinesandponies.com)",
+  "description": "Pines & Ponies \u2014 direct-booking vacation rental site (pinesandponies.com)",
   "scripts": {
     "build": "eleventy",
     "dev": "eleventy --serve",
     "test:unit": "node --test test/*.test.js",
     "test:audit": "node scripts/audit.js",
-    "test": "npm run build && npm run test:unit && npm run test:audit"
+    "test": "npm run build && npm run test:unit && npm run test:audit",
+    "test:live": "node scripts/qa-crawl.js"
   },
   "license": "UNLICENSED",
   "dependencies": {
