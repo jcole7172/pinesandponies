@@ -6,7 +6,6 @@ tagline: Waterfront · kayaks included · fire pit
 title: Lakeside Retreat
 pageTitle: Lakeside Retreat | Pines & Ponies Adirondack Rental
 description: "Book Lakeside Retreat direct: a waterfront Adirondack escape with kayaks and a fire pit in Upstate New York. Sleeps six, no platform service fees."
-canonical: /lakeside.html
 heroType: Waterfront Retreat
 sleeps: 6
 beds: 3

@@ -6,7 +6,6 @@ tagline: 5-bedroom estate · horse access · wraparound porch
 title: Meadow View Estate
 pageTitle: Meadow View Estate | Pines & Ponies Adirondack Rental
 description: "Book Meadow View Estate direct: a five-bedroom equestrian estate with horse access and a wraparound porch in Upstate New York. Sleeps ten, no platform fees."
-canonical: /meadow-view.html
 heroType: Equestrian Estate
 sleeps: 10
 beds: 5

@@ -7,7 +7,7 @@ export default {
   navBack: true,
   pageScript: 'assets/property-booking.js',
   eleventyComputed: {
-    canonical: (data) => data.canonical || `/${data.slug}.html`,
+    canonical: (data) => data.canonical || `/${data.slug}`,
     pageTitle: (data) => data.pageTitle || `${data.name} | Pines & Ponies Vacation Rental`,
     title: (data) => data.title || data.name,
     summary: (data) => data.summary || data.tagline || data.name,

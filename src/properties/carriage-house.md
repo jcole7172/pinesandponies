@@ -6,7 +6,6 @@ tagline: Restored loft · romantic getaway · garden views
 title: The Carriage House
 pageTitle: The Carriage House | Pines & Ponies Adirondack Rental
 description: "Book The Carriage House direct: a restored loft and romantic Adirondack getaway with garden views in Upstate New York. Sleeps two, no platform fees."
-canonical: /carriage-house.html
 heroType: Restored Loft
 sleeps: 2
 beds: 1

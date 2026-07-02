@@ -6,7 +6,6 @@ tagline: Forest cabin · stone fireplace · private dock
 title: Pine Ridge Cottage
 pageTitle: Pine Ridge Cottage | Pines & Ponies Adirondack Rental
 description: "Book Pine Ridge Cottage direct: a forest cabin with a stone fireplace, private dock, and lake access in the Adirondacks. Sleeps four, no platform service fees."
-canonical: /pine-ridge.html
 heroType: Forest Cabin
 sleeps: 4
 beds: 2
