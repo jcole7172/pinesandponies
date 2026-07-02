@@ -1,0 +1,21 @@
+---
+permalink: /_headers
+layout: false
+eleventyExcludeFromCollections: true
+---
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), interest-cohort=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://picsum.photos https://images.unsplash.com; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com; frame-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com; object-src 'none'; upgrade-insecure-requests
+# OwnerRez go-live: add https://secure.ownerreservations.com to script-src/frame-src/connect-src/img-src.
+
+# The visual editor needs a looser policy (Sveltia CMS talks to GitHub, incl. media blobs).
+/admin/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://api.github.com https://github.com https://avatars.githubusercontent.com https://raw.githubusercontent.com https://objects.githubusercontent.com; frame-src 'self'; form-action 'self' https://github.com

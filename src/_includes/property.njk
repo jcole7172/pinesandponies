@@ -1,0 +1,86 @@
+---
+layout: base.njk
+---
+<main id="main" class="wrap">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "{{ name }}",
+    "description": "{{ description }}",
+    "image": "{{ site.domain }}/assets/og.png",
+    "brand": { "@type": "Brand", "name": "Pines & Ponies" },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "{{ rate }}",
+      "availability": "https://schema.org/InStock",
+      "url": "{{ site.domain }}{{ canonical }}"
+    }
+  }
+  </script>
+
+  <div class="crumb"><a href="index.html">Stays</a> &nbsp;/&nbsp; {{ name }}</div>
+  <div class="gal">
+    {% for g in gallery %}
+    <div{% if loop.index0 == 0 %} class="big"{% elif loop.index0 >= 3 %} class="h4"{% endif %} style="background-image:url('{{ g.src | imgUrl }}')">{% if g.tag %}<span class="gtag">{{ g.tag }}</span>{% endif %}</div>
+    {% endfor %}
+  </div>
+
+  <div class="layout">
+    <div>
+      <div class="ttl">
+        <p class="eyebrow">{{ heroType }} · Sleeps {{ sleeps }}</p>
+        <h1>{{ name }}</h1>
+        <p class="loc">{{ site.region }} <span class="stars">★★★★★</span> <span style="color:var(--moss)">New for 2026</span></p>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><b>{{ sleeps }}</b><span>Guests</span></div>
+        <div class="fact"><b>{{ beds }}</b><span>Bedrooms</span></div>
+        <div class="fact"><b>{{ baths }}</b><span>Baths</span></div>
+        <div class="fact"><b>{{ "Yes" if pets else "No" }}</b><span>Pets</span></div>
+        <div class="fact"><b>{{ minNights }} nt</b><span>Minimum</span></div>
+      </div>
+
+      <div class="body">
+        <h2>{{ summary }}</h2>
+        {{ content | safe }}
+
+        <h2>What's here</h2>
+        <div class="amen">
+          {% for a in amenities %}<div>{{ a }}</div>{% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="book" data-rate="{{ rate }}" data-clean="{{ cleaning }}" data-min="{{ minNights }}" data-property="{{ name }}" data-email="{{ site.email }}" data-formkey="{{ site.web3formsKey }}">
+        <div class="head">
+          <div class="p"><b>{{ rate | money }}</b><span>/ night · book direct</span></div>
+          <span class="badge">Best price guaranteed</span>
+        </div>
+        <div class="form">
+          <div class="drow">
+            <div class="dcell"><label for="ci">Check in</label><input type="date" id="ci" /></div>
+            <div class="dcell"><label for="co">Check out</label><input type="date" id="co" /></div>
+          </div>
+          <div class="selrow"><label for="g">Guests</label><select id="g"><option>2 guests</option><option>4 guests</option><option>6 guests</option></select></div>
+          <div class="selrow"><label for="gname">Your name</label><input type="text" id="gname" autocomplete="name" placeholder="Jane Smith" /></div>
+          <div class="selrow"><label for="gemail">Your email</label><input type="email" id="gemail" autocomplete="email" placeholder="jane@email.com" /></div>
+          <input type="text" id="gotcha" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
+          <button class="btn" id="reserve">Request to Book</button>
+        </div>
+        <p class="bookerr" id="bookErr" role="alert" hidden></p>
+        <div class="calc" id="calc">
+          <div class="li"><span id="nl">{{ rate | money }} × 4 nights</span><span id="sub">{{ (rate * 4) | money }}</span></div>
+          <div class="li"><span>Cleaning fee</span><span>{{ cleaning | money }}</span></div>
+          <div class="li"><span>Service fee</span><span style="color:var(--moss)">$0</span></div>
+          <div class="li tot"><span>Total</span><span id="tot">{{ (rate * 4 + cleaning) | money }}</span></div>
+        </div>
+        <div class="save"><b id="saveAmt">Save ~$160</b> vs booking these dates on Airbnb or Vrbo.</div>
+        <p class="reassure">You won't be charged yet. We confirm every booking personally.</p>
+      </div>
+    </aside>
+  </div>
+</main>

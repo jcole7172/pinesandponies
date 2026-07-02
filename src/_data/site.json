@@ -1,0 +1,22 @@
+{
+  "name": "Pines & Ponies",
+  "tagline": "Adirondack Vacation Rentals",
+  "domain": "https://pinesandponies.com",
+  "description": "Book hand-kept cabins and lake retreats around Saratoga Springs, Lake George, and Upstate New York direct, and skip the platform service fees.",
+  "region": "Saratoga Springs, Lake George & Upstate New York",
+  "email": "hello@pinesandponies.com",
+  "phone": "(518) 330-0224",
+  "phoneHref": "+15183300224",
+  "launchMode": true,
+  "launchBanner": "Opening for the 2026 season",
+  "launchNote": "Opening for the 2026 season. Send your dates and we'll hold them, no payment until your stay is confirmed.",
+  "social": {
+    "instagram": "https://instagram.com/pinesandponies",
+    "facebook": "https://facebook.com/pinesandponies"
+  },
+  "themeColor": "#1c3027",
+  "previewMode": true,
+  "web3formsKey": "",
+  "analyticsToken": "",
+  "heroImage": ""
+}

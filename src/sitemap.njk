@@ -1,0 +1,12 @@
+---
+permalink: /sitemap.xml
+layout: false
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ site.domain }}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  {%- for p in collections.properties %}
+  <url><loc>{{ site.domain }}{{ p.data.canonical }}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  {%- endfor %}
+</urlset>

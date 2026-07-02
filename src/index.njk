@@ -1,0 +1,99 @@
+---
+title: Pines & Ponies
+pageTitle: Pines & Ponies | Adirondack Vacation Rentals, Upstate NY
+canonical: /
+---
+<main id="main">
+<header class="hero"{% if site.heroImage %} style="--hero-img:url('{{ site.heroImage | imgUrl }}')"{% endif %}>
+  <div class="hero-grain"></div>
+  <div class="wrap hero-in">
+    <p class="eyebrow rv">Adirondack Cabins &amp; Equestrian Estates</p>
+    <h1 class="rv">Wake up to<br><em>pines, ponds</em><br>&amp; quiet.</h1>
+    <p class="lede rv">Hand-kept retreats across Upstate New York. Forest cabins, lakeside hideaways, and a working horse estate, bookable straight from us.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <form class="bookbar rv" id="bookbar">
+    <div class="bf">
+      <label for="bf-where">Where</label>
+      <select id="bf-where" aria-label="Where">
+        <option>Any retreat</option>
+        {% for p in collections.properties %}<option>{{ p.data.name }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="bf"><label for="ci">Check in</label><input type="date" id="ci" aria-label="Check in date" /></div>
+    <div class="bf"><label for="co">Check out</label><input type="date" id="co" aria-label="Check out date" /></div>
+    <div class="bf"><label for="bf-guests">Guests</label><select id="bf-guests" aria-label="Guests"><option>2 guests</option><option>4 guests</option><option>6 guests</option><option>8+ guests</option></select></div>
+    <div class="bf go"><button type="submit" class="btn btn-gold">Search</button></div>
+  </form>
+  {% if site.launchMode %}<p class="launch-note rv">{{ site.launchNote }}</p>{% endif %}
+</div>
+
+<section id="stays">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">The Collection</p>
+      <h2>Four ways to slow down.</h2>
+      <p>Every stay is privately owned and personally cared for, no front desks, no crowds.</p>
+    </div>
+    <div class="props">
+      {% for p in collections.properties %}
+      <a class="card rv" href="{{ p.data.slug }}.html" style="display:block">
+        <div class="ph" style="background-image:url('{{ p.data.cardImage | imgUrl }}')"><span class="tag">Sleeps {{ p.data.sleeps }}</span></div>
+        <div class="body">
+          <h3>{{ p.data.name }}</h3>
+          <p class="meta">{{ p.data.tagline }}</p>
+          <div class="price"><b>{{ p.data.rate | money }}<span> / night</span></b><span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--clay)">View &amp; book →</span></div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="band" id="direct">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Skip the Middleman</p>
+      <h2>Better to book direct.</h2>
+    </div>
+    <div class="perks">
+      <div class="perk rv"><span class="ico">✦</span><h3>No service fees</h3><p>Booking sites tack on 14 to 16% in guest fees. Book here and that money stays in your pocket.</p></div>
+      <div class="perk rv"><span class="ico">✦</span><h3>Talk to the owner</h3><p>Questions about the dock, the horses, an early check-in? You reach us directly, not a call center.</p></div>
+      <div class="perk rv"><span class="ico">✦</span><h3>Best rate, always</h3><p>The same dates, lower total. Our direct price beats Airbnb and Vrbo every time.</p></div>
+    </div>
+    <div class="save-note rv">
+      <span class="big">~$125</span>
+      <p>Roughly what a guest saves on a typical $1,000 stay by booking here instead of through a platform. Same cabin, same dates, none of the fees.</p>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap story">
+    <div class="story-img rv"></div>
+    <div class="rv">
+      <p class="eyebrow">Our Story</p>
+      <h2>A little land, looked after.</h2>
+      <p>Pines &amp; Ponies began with a single cabin at the edge of the woods and a simple idea: give people a place that slows them down. Today our small collection spans forest, water, and pasture across the Capital Region and the southern Adirondacks.</p>
+      <p>Every property is owned and maintained by us, not a faceless management company. That means real local tips, real flexibility, and a stay that actually feels personal.</p>
+      <p class="sig">The Cole family, Upstate NY</p>
+    </div>
+  </div>
+</section>
+
+<section class="quotes">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Guest Notes</p>
+      <h2>Worth the drive up.</h2>
+    </div>
+    <div class="qgrid">
+      <div class="quote rv"><div class="stars">★★★★★</div><p>"The dock at sunrise alone was worth it. Booking straight with the owner was easy and saved us a chunk."</p><div class="who">Marisa &amp; Tom · Pine Ridge</div></div>
+      <div class="quote rv"><div class="stars">★★★★★</div><p>"The kids fed the ponies every morning. Meadow View is exactly the kind of place you hope exists."</p><div class="who">The Alvarez Family · Meadow View</div></div>
+      <div class="quote rv"><div class="stars">★★★★★</div><p>"Quiet, clean, and the host answered every question within minutes. We're already planning our return."</p><div class="who">Devon K. · Lakeside</div></div>
+    </div>
+  </div>
+</section>
+</main>

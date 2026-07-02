@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="assets/head.js"></script>
+<title>{{ pageTitle if pageTitle else (title + " | " + site.name) }}</title>
+<meta name="description" content="{{ description if description else site.description }}" />
+<link rel="canonical" href="{{ site.domain }}{{ canonical if canonical else '/' }}" />
+<meta name="theme-color" content="{{ site.themeColor }}" />
+<meta name="robots" content="index, follow" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="{{ site.name }}" />
+<meta property="og:title" content="{{ ogTitle if ogTitle else title }}" />
+<meta property="og:description" content="{{ description if description else site.description }}" />
+<meta property="og:url" content="{{ site.domain }}{{ canonical if canonical else '/' }}" />
+<meta property="og:image" content="{{ site.domain }}/assets/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ ogTitle if ogTitle else title }}" />
+<meta name="twitter:description" content="{{ description if description else site.description }}" />
+<meta name="twitter:image" content="{{ site.domain }}/assets/og.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "{{ site.name }}",
+  "description": "{{ site.description }}",
+  "url": "{{ site.domain }}/",
+  "image": "{{ site.domain }}/assets/og.png",
+  "logo": "{{ site.domain }}/assets/icon-512.png",
+  "areaServed": "{{ site.region }}",
+  "telephone": "{{ site.phone }}",
+  "email": "{{ site.email }}",
+  "address": { "@type": "PostalAddress", "addressRegion": "NY", "addressCountry": "US" },
+  "parentOrganization": { "@type": "Organization", "name": "Cole's Capital Group" }
+}
+</script>
+{% if extraHead %}{{ extraHead | safe }}{% endif %}
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+{% if site.previewMode %}<div class="ribbon">Preview</div>{% endif %}
+
+{% if site.launchMode %}<div class="util">{{ site.launchBanner }} &nbsp;·&nbsp; Now taking inquiries &nbsp;·&nbsp; Book direct, skip the platform fees</div>{% endif %}
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="index.html" class="brand">
+      <img class="brand-mark" src="assets/icon-192.png" width="42" height="42" alt="Pines and Ponies logo" />
+      <span>Pines &amp; Ponies<small>Adirondack Rentals</small></span>
+    </a>
+    {% if navBack %}
+    <a href="index.html" class="back">&larr; All stays</a>
+    {% else %}
+    <div class="nav-links" id="menu">
+      <a href="index.html#stays">Stays</a>
+      <a href="index.html#direct">Why Book Direct</a>
+      <a href="index.html#story">Our Story</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#stays" class="btn">Check Availability</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    {% endif %}
+  </div>
+</nav>
+
+{{ content | safe }}
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img class="foot-logo" src="assets/logo.png" width="170" height="170" alt="Pines and Ponies, Adirondack Vacation Rentals" />
+        <h4>Reserve your stay.</h4>
+        <p>Tell us your dates and we'll hold the cabin. Direct booking means the best price and a real person on the other end.</p>
+        <p style="margin-top:18px"><a href="mailto:{{ site.email }}" class="btn btn-gold">Request to Book</a></p>
+      </div>
+      <div class="foot-col">
+        <h5>Visit</h5>
+        {% for p in collections.properties %}<a href="{{ p.data.slug }}.html">{{ p.data.name }}</a>{% endfor %}
+      </div>
+      <div class="foot-col">
+        <h5>Reach Us</h5>
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+        <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a>
+        <a href="#">{{ site.region }}</a>
+        {% if site.social.instagram %}<a href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a>{% endif %}
+        {% if site.social.facebook %}<a href="{{ site.social.facebook }}" target="_blank" rel="noopener">Facebook</a>{% endif %}
+        <p class="also">Also listed on <b>Airbnb</b>, <b>Vrbo</b> &amp; <b>Furnished Finder</b>, but you'll always pay less here.</p>
+      </div>
+    </div>
+    <div class="copyr">
+      <span>© 2026 Pines &amp; Ponies · A Cole's Capital Group property</span>
+      <span>Design by Teflon Don LLC</span>
+    </div>
+  </div>
+</footer>
+
+{% if not navBack %}<script type="module" src="assets/app.js"></script>{% endif %}
+{% if pageScript %}<script type="module" src="{{ pageScript }}"></script>{% endif %}
+{% if site.analyticsToken %}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.analyticsToken }}"}'></script>{% endif %}
+</body>
+</html>

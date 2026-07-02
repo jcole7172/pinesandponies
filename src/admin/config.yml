@@ -1,0 +1,82 @@
+backend:
+  name: github
+  repo: donnyismail/pinesandponies
+  branch: main
+
+local_backend: true
+
+media_folder: "src/assets/uploads"
+public_folder: "assets/uploads"
+
+site_url: https://pinesandponies.com
+display_url: https://pinesandponies.com
+
+collections:
+  - name: properties
+    label: Properties
+    label_singular: Property
+    description: "Add, edit, or remove a rental. Each one becomes its own page automatically."
+    folder: "src/properties"
+    create: true
+    slug: "{{fields.slug}}"
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{name}} · ${{rate}}/night"
+    sortable_fields: [order, name, rate]
+    fields:
+      - { label: "Property name", name: name, widget: string }
+      - { label: "URL slug", name: slug, widget: string, hint: "lowercase with dashes, e.g. pine-ridge (becomes /pine-ridge.html)" }
+      - { label: "Display order", name: order, widget: number, default: 5, value_type: int }
+      - { label: "Short tagline", name: tagline, widget: string, hint: "shows under the name on the cards" }
+      - { label: "Hero label (optional)", name: heroType, widget: string, required: false, hint: "e.g. Forest Cabin, Waterfront Retreat" }
+      - { label: "One-line summary (optional)", name: summary, widget: string, required: false, hint: "leave blank to use the tagline" }
+      - { label: "Sleeps (guests)", name: sleeps, widget: number, value_type: int }
+      - { label: "Bedrooms", name: beds, widget: number, value_type: int }
+      - { label: "Bathrooms", name: baths, widget: number, value_type: float }
+      - { label: "Pets allowed", name: pets, widget: boolean, default: true }
+      - { label: "Minimum nights", name: minNights, widget: number, default: 2, value_type: int }
+      - { label: "Nightly rate (USD)", name: rate, widget: number, value_type: int }
+      - { label: "Cleaning fee (USD)", name: cleaning, widget: number, value_type: int }
+      - { label: "Card photo", name: cardImage, widget: image, hint: "the photo on the home page card" }
+      - label: "Photo gallery"
+        name: gallery
+        widget: list
+        summary: "{{fields.tag}}"
+        fields:
+          - { label: "Photo", name: src, widget: image }
+          - { label: "Caption", name: tag, widget: string, required: false }
+      - { label: "Amenities", name: amenities, widget: list, hint: "one per line" }
+      - { label: "Page title (SEO, optional)", name: pageTitle, widget: string, required: false, hint: "leave blank to auto-generate" }
+      - { label: "Search description (SEO, optional)", name: description, widget: text, required: false, hint: "leave blank to auto-generate" }
+      - { label: "Full description", name: body, widget: markdown }
+
+  - name: settings
+    label: Site Settings
+    description: "Contact info, launch banner, and social links."
+    files:
+      - name: site
+        label: "Pines & Ponies settings"
+        file: "src/_data/site.json"
+        fields:
+          - { label: "Business name", name: name, widget: string }
+          - { label: "Tagline", name: tagline, widget: string }
+          - { label: "Domain", name: domain, widget: string }
+          - { label: "Meta description", name: description, widget: text }
+          - { label: "Region", name: region, widget: string }
+          - { label: "Contact email", name: email, widget: string }
+          - { label: "Phone (display)", name: phone, widget: string }
+          - { label: "Phone (link, e.g. +15185550142)", name: phoneHref, widget: string }
+          - { label: "Launch mode (show 'opening 2026' banner)", name: launchMode, widget: boolean, default: true }
+          - { label: "Launch banner text", name: launchBanner, widget: string }
+          - { label: "Launch note (under search bar)", name: launchNote, widget: text }
+          - label: "Social links"
+            name: social
+            widget: object
+            fields:
+              - { label: Instagram, name: instagram, widget: string, required: false }
+              - { label: Facebook, name: facebook, widget: string, required: false }
+          - { label: "Hero photo (big top image — optional)", name: heroImage, widget: image, required: false, hint: "wide landscape photo works best" }
+          - { label: "Preview ribbon (uncheck at launch)", name: previewMode, widget: boolean, default: true }
+          - { label: "Form key (Web3Forms access key — enables real form submissions)", name: web3formsKey, widget: string, required: false, hint: "leave blank to use email fallback" }
+          - { label: "Analytics token (Cloudflare Web Analytics)", name: analyticsToken, widget: string, required: false }
+          - { label: "Theme color", name: themeColor, widget: color, default: "#1c3027" }
