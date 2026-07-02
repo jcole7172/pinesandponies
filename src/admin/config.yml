@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: donnyismail/pinesandponies
+  repo: jcole7172/pinesandponies
   branch: main
 
 local_backend: true
