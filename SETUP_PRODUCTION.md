@@ -52,3 +52,13 @@ OwnerRez sources in `dist/pines/_headers` CSP (already documented inline).
   GitHub fine-grained PAT scoped to this repo works with NO OAuth worker at all. Easiest launch path: create
   a PAT for John's GitHub account (contents: read/write on this repo) and he pastes it once; the worker
   becomes optional polish.
+
+## STATUS (2026-07-02)
+- pinesandponies.com: LIVE on Cloudflare Pages (John's account), CSP/HSTS enforced, full QA crawl clean.
+- colescapitalgroup.com: zone staged with complete M365 email records + Pages domains attached.
+  WAITING on John changing GoDaddy nameservers to aldo/dalary.ns.cloudflare.com. After activation:
+  verify email in/out, run qa-crawl on the domain, then transfer the registration (auth code held by Donny).
+- Deploys: currently direct-upload (`npx wrangler pages deploy dist --project-name=<name>`) from Donny's
+  machine using John's CF account. After repo transfer + collaborator access: add a CF API token as a repo
+  secret and a wrangler-action step in deploy.yml so pushes auto-deploy to Cloudflare too.
+- GitHub repo transfers to jcole7172: initiated, waiting on his accept clicks.
