@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: deploy
   cancel-in-progress: true
 
 jobs:
@@ -28,7 +28,8 @@ jobs:
         with:
           path: dist
 
-  deploy:
+  # Preview on GitHub Pages
+  deploy-preview:
     needs: build
     runs-on: ubuntu-latest
     environment:
@@ -37,3 +38,29 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Production on Cloudflare Pages (runs when the CLOUDFLARE_API_TOKEN secret is set)
+  deploy-production:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - name: Check deploy token
+        id: check
+        run: |
+          if [ -n "$CF_TOKEN" ]; then echo "ok=true" >> "$GITHUB_OUTPUT"; else echo "CLOUDFLARE_API_TOKEN not set; skipping production deploy"; fi
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.ok == 'true'
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.ok == 'true'
+        with:
+          node-version: 20
+      - run: npm ci && npm run build
+        if: steps.check.outputs.ok == 'true'
+      - uses: cloudflare/wrangler-action@v3
+        if: steps.check.outputs.ok == 'true'
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 2ec33f9f741ab922533b84e11dbda045
+          command: pages deploy dist --project-name=pinesandponies --branch=main --commit-dirty=true
